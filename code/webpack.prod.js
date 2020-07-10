@@ -13,11 +13,7 @@ module.exports = merge(baseConf, {
             patterns: [
                 {
                     from: __dirname + '/public',
-                    to: __dirname + '/dist/public',
-                    globOptions: {
-                        dot: true,
-                        ignore: ['*.html']
-                    },
+                    to: __dirname + '/dist',
                 }
             ]
         })

@@ -6,6 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
     entry: './src/main.js',
     mode: 'development',
+    devtool: "SourceMap",
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'dist'),
@@ -21,10 +22,22 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-env']
-                }
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }
+                ]
+
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'eslint-loader',
+                enforce: 'pre'
+
             },
             {
                 test: /\.vue$/,
